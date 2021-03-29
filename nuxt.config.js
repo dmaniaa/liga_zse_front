@@ -73,7 +73,7 @@ export default {
         },
         endpoints: {
           login: {
-            url: '/login',
+            url: '/user/login',
             method: 'post'
           },
           user: {
@@ -124,6 +124,9 @@ export default {
             fix: true
           }
         })
+      }
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     }
   },

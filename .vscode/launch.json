@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "server: express",
+      "command": "node ${workspaceFolder}/turniej_strona_back_v2/server.js",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run dev",
+      "name": "server: nuxt",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "client: chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "fullstack: nuxt",
+      "configurations": ["server: nuxt", "client: chrome", "server: express"]
+    }
+  ]
+}

@@ -2,7 +2,6 @@
   <b-navbar toggleable="lg" type="dark" variant="primary">
     <b-navbar-brand to="/" exact exact-active-class="active">
       <img v-if="$compConfig.logo == true" :src="$compConfig.logoFile" alt="Liga ZSE 2020" class="brand-logo">
-      </img>
       <a v-else> {{ $compConfig.name }} </a>
     </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse" />

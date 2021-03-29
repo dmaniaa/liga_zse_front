@@ -144,7 +144,7 @@ export default {
           return
         }
       }
-      const resp = await this.$axios.$post('/updateUser.php', this.form)
+      const resp = await this.$axios.$post('/user/update', this.form)
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'
