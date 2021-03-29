@@ -4,7 +4,7 @@
     
     {
       "name": "server: express",
-      "command": "node ${workspaceFolder}/turniej_strona_back_v2/server.js",
+      "command": "node ${workspaceFolder}/../turniej_strona_back_v2/server.js",
       "request": "launch",
       "type": "node-terminal"
     },
