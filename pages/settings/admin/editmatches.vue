@@ -244,8 +244,8 @@
 <script>
 export default {
   async asyncData ({ $axios }) {
-    const matches = await $axios.$get('/getMatches.php')
-    const teams = await $axios.$get('/admin_getTeams.php')
+    const matches = await $axios.$get('/getMatches')
+    const teams = await $axios.$get('/getTeams')
     const teamsMapped = await teams.data.map((item) => {
       const container = {}
       container.value = item.team_id
@@ -344,7 +344,7 @@ export default {
       this.$root.$emit('bv::show::modal', this.addModal.id, button)
     },
     fieldvalid (field) {
-      return field.trim().length > 0
+      return field.toString().trim().length > 0
     },
     async updateMatch () {
       const resp = await this.$axios.$post('/admin_updateMatch.php', this.editModal.content)
@@ -356,7 +356,7 @@ export default {
       await this.$nuxt.refresh() // pobieramy znów mecze, wincyj kurwa requestów do API, bo czemu nie
     },
     async addMatch () {
-      const resp = await this.$axios.$post('/admin_addMatch.php', this.addModal.content)
+      const resp = await this.$axios.$post('/admin/addMatch', this.addModal.content)
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'

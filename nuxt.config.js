@@ -65,8 +65,14 @@ export default {
     scopeKey: 'scope',
     strategies: {
       local: {
+        scheme: 'refresh',
         token: {
           property: 'data.token'
+        },
+        refreshToken: {
+          property: 'data.refreshToken',
+          data: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 30
         },
         user: {
           property: 'data.user'
@@ -80,7 +86,14 @@ export default {
             url: '/user',
             method: 'post'
           },
-          logout: false
+          refresh: {
+            url: '/user/refresh',
+            method: 'post'
+          },
+          logout: {
+            url: '/user/logout',
+            method: 'post'
+          }
         },
         scope: true
       }
