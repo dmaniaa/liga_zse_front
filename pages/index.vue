@@ -23,7 +23,14 @@
     </b-row>
     <b-row>
       <b-col>
-        <b-embed type="embed" aspect="16by9" src="https://www.youtube.com/embed/UmSMH3pEz9k" allowfullscreen height="100px" />
+        <b-embed
+          v-if="$compConfig.showTrailer == true"
+          type="embed"
+          aspect="16by9"
+          src="https://www.youtube.com/embed/UmSMH3pEz9k"
+          allowfullscreen
+          height="100px"
+        />
       </b-col>
     </b-row>
   </b-container>

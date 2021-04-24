@@ -129,21 +129,21 @@
           <b-form-group
             id="team-1-score-group"
             label="Wynik drużyny 1: "
-            label-for="team_1_score"
+            label-for="team_id_1_score"
           >
             <b-form-input
               id="team_1_score"
-              v-model="editModal.content.team_1_score"
+              v-model="editModal.content.team_id_1_score"
             />
           </b-form-group>
           <b-form-group
             id="team-1-score-group"
             label="Wynik drużyny 2: "
-            label-for="team_2_score"
+            label-for="team_id_2_score"
           >
             <b-form-input
               id="team_2_score"
-              v-model="editModal.content.team_2_score"
+              v-model="editModal.content.team_id_2_score"
             />
           </b-form-group>
           <b-form-group
@@ -274,11 +274,11 @@ export default {
           label: 'Godzina'
         },
         {
-          key: 'team_1_score',
+          key: 'team_id_1_score',
           label: 'Wynik drużyny 1'
         },
         {
-          key: 'team_2_score',
+          key: 'team_id_2_score',
           label: 'Wynik drużyny 2'
         },
         {
@@ -347,7 +347,7 @@ export default {
       return field.toString().trim().length > 0
     },
     async updateMatch () {
-      const resp = await this.$axios.$post('/admin_updateMatch.php', this.editModal.content)
+      const resp = await this.$axios.$post('/admin/updateMatch', this.editModal.content)
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'
@@ -367,8 +367,8 @@ export default {
         team_id_2: '',
         date: '',
         time: '',
-        team_1_score: '',
-        team_2_score: '',
+        team_id_1_score: '',
+        team_id_2_score: '',
         note: ''
       }
       await this.$nuxt.refresh() // pobieramy znów mecze, wincyj kurwa requestów do API, bo czemu nie

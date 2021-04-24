@@ -136,7 +136,7 @@
 <script>
 export default {
   async asyncData ({ $axios, route, params }) {
-    const teams = await $axios.$get('/admin_getTeam.php/?team_id=' + route.params.id)
+    const teams = await $axios.$get('/admin/getTeam/' + route.params.id)
     return { teams }
   },
   data () {
@@ -203,7 +203,7 @@ export default {
   },
   methods: {
     edit (item, index, button) {
-      this.selected = JSON.parse(item.scope)
+      this.selected = item.scope
       this.editModal.content = item
       this.$root.$emit('bv::show::modal', this.editModal.id, button)
     },
@@ -213,7 +213,7 @@ export default {
     },
     async updateUser () {
       this.editModal.content.scope = JSON.stringify(this.selected)
-      const resp = await this.$axios.$post('/admin_updateUser.php', this.editModal.content)
+      const resp = await this.$axios.$post('/admin/user/update', this.editModal.content)
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'

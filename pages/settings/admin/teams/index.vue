@@ -65,7 +65,7 @@
 <script>
 export default {
   async asyncData ({ $axios }) {
-    const teams = await $axios.$get('/getTeams.php')
+    const teams = await $axios.$get('/getTeams')
     return { teams }
   },
   data () {

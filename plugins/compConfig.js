@@ -5,6 +5,7 @@ export default async ({ $axios, app }, inject) => {
     name: config.data.compName, // nazwa turnieju
     description: config.data.description,
     logo: true, // czy użyć logo na pasku nawigacji
+    showTrailer: config.data.showTrailer,
     logoFile: 'logo-150x150.png', // nazwa pliku z logo
     stage: 'final', // obecny etap, qualify = kwalifikacje(grupy), final = finał(drabinka)
     bgUseFile: true, // TODO: plik jako tło strony

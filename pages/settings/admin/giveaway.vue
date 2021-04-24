@@ -9,6 +9,12 @@
     </b-row>
     <b-row>
       <b-col>
+        <b-button variant="success" class="mb-4" @click="enableBot()">
+          Włącz bota
+        </b-button>
+        <b-button variant="success" class="mb-4" @click="disableBot()">
+          Wyłącz bota
+        </b-button>
         <b-button variant="success" class="mb-4" @click="enableGiveaway()">
           Włącz giveaway
         </b-button>
@@ -63,7 +69,7 @@
 <script>
 export default {
   async asyncData ({ $axios }) {
-    const giveaway = await $axios.$get('/admin_getGiveaway.php')
+    const giveaway = await $axios.$get('/bot/getGiveaway')
     return { giveaway }
   },
   data () {
@@ -96,8 +102,24 @@ export default {
     }
   },
   methods: {
+    async enableBot () {
+      const resp = await this.$axios.$post('/bot/enable')
+      this.resp = resp
+      if (resp.status.code === '200') {
+        this.type = 'success'
+      }
+      this.showAlert = true
+    },
+    async disableBot () {
+      const resp = await this.$axios.$post('/bot/disable')
+      this.resp = resp
+      if (resp.status.code === '200') {
+        this.type = 'success'
+      }
+      this.showAlert = true
+    },
     async enableGiveaway () {
-      const resp = await this.$axios.$post('/admin_enableGiveaway.php')
+      const resp = await this.$axios.$post('/bot/enableGiveaway')
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'
@@ -105,7 +127,7 @@ export default {
       this.showAlert = true
     },
     async disableGiveaway () {
-      const resp = await this.$axios.$post('/admin_disableGiveaway.php')
+      const resp = await this.$axios.$post('/bot/disableGiveaway')
       this.resp = resp
       if (resp.status.code === '200') {
         this.type = 'success'
